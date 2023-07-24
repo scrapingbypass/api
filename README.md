@@ -1,15 +1,15 @@
 # ScrapingBypass API 
 Using **[ScrapingBypass](https://www.scrapingbypass.com/)** can help you easily bypass Cloudflare's verification.
 This document provides detailed usage methods of HTTP API mode and Proxy mode, including interface address, request parameters, return processing, etc.
-## Curl
-### API
-#### Request
+## 1 Curl
+### 1.1 API
+#### 1.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
 https://api.cloudbypass.com
 ```
 
-##### Request header (custom request parameters)
+##### 1.1.1.1 Request header (custom request parameters)
 > Here is the full list of request headers for custom requests.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
@@ -21,7 +21,7 @@ https://api.cloudbypass.com
 | x-cb-version  | string   | -           |              | When you need to use Cloud Piercer v2, the request header should be 2. |
 | x-cb-part     | integer  | 0           |              | This request header is only valid in Cloud Piercer v2 and is used to distinguish different sessions. Users can have up to 1000 session partitions. |
 
-##### Example
+##### 1.1.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 # Use curl to request https://opensea.io/category/memberships
@@ -34,11 +34,11 @@ curl -X GET "https://api.cloudbypass.com/category/memberships" ^
    -H "x-cb-host: opensea.io" -k
 
 ```
-#### Response
+#### 1.1.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.  
 When an error occurs, the server will put the error information into the response body, and you can judge it through our custom response parameters.
 
-##### Response header (custom response parameters)
+##### 1.1.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -46,10 +46,10 @@ When an error occurs, the server will put the error information into the respons
 | x-cb-status   | -          | string   | Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed.  The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting.  When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 1.1.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent, if the response header x-cb-status is empty, the response body An error message will be returned.
 
-##### Error message
+##### 1.1.2.3 Error message
 The error message is a JSON object, the following is an example:
 > id: request unique identifier, which can be used for troubleshooting.
 > code: Error code, which is used to identify the type of error and can be used for troubleshooting.
@@ -62,7 +62,7 @@ The error message is a JSON object, the following is an example:
   "message": "string"
 }
 ```
-##### Error code
+##### 1.1.2.4 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                    |
@@ -87,21 +87,21 @@ The error message is a JSON object, the following is an example:
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-### Proxy
-#### Ask
+### 1.2 Proxy
+#### 1.2.1 Ask
 > Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
 
 ```
 http://proxy.cloudbypass.com:1087
 ```
-##### Request parameters
+##### 1.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
 |---------------|----------|-------------|--------------|-----------------|
 | proxy         | string   | -           |              | Custom proxy address, which can be IP or domain name. Support http, https protocols, such as: http:proxy.com:8080 or http:username:password:proxy.com:8080. The protocol header is optional, if not filled, it defaults to http. |
 
-##### Example
+##### 1.2.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 # Use curl to request https://opensea.io/category/memberships
@@ -113,11 +113,11 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087" -k
 ```
 
-#### Response
+#### 1.2.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.
 > When an error occurs, the server will put the error information into the custom response header parameter.
 
-##### Response header (custom response parameters)
+##### 1.2.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -125,10 +125,10 @@ curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@p
 | x-cb-status   | -          | string   | 	Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed. The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting. When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 1.2.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent. When `x-cb-status` is empty, the error code will be The response header `x-cb-code` is returned, and the response body is an error message.
 
-##### Error code
+##### 1.2.2.3 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                   |
@@ -153,15 +153,15 @@ curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@p
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-## Python
-### API
-#### Request
+## 2 Python
+### 2.1 API
+#### 2.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
 https://api.cloudbypass.com
 ```
 
-##### Request header (custom request parameters)
+##### 2.1.1.1 Request header (custom request parameters)
 > Here is the full list of request headers for custom requests.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
@@ -173,7 +173,7 @@ https://api.cloudbypass.com
 | x-cb-version  | string   | -           |              | When you need to use Cloud Piercer v2, the request header should be 2. |
 | x-cb-part     | integer  | 0           |              | This request header is only valid in Cloud Piercer v2 and is used to distinguish different sessions. Users can have up to 1000 session partitions. |
 
-##### Example
+##### 2.1.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 // Use python to request https://opensea.io/category/memberships
@@ -203,11 +203,11 @@ response = requests.request("GET", url, headers=headers)
 print(response.text)
 
 ```
-#### Response
+#### 2.1.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.  
 When an error occurs, the server will put the error information into the response body, and you can judge it through our custom response parameters.
 
-##### Response header (custom response parameters)
+##### 2.1.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -215,10 +215,10 @@ When an error occurs, the server will put the error information into the respons
 | x-cb-status   | -          | string   | Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed.  The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting.  When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 2.1.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent, if the response header x-cb-status is empty, the response body An error message will be returned.
 
-##### Error message
+##### 2.1.2.3 Error message
 The error message is a JSON object, the following is an example:
 > id: request unique identifier, which can be used for troubleshooting.
 > code: Error code, which is used to identify the type of error and can be used for troubleshooting.
@@ -231,7 +231,7 @@ The error message is a JSON object, the following is an example:
   "message": "string"
 }
 ```
-##### Error code
+##### 2.1.2.4 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                    |
@@ -256,21 +256,21 @@ The error message is a JSON object, the following is an example:
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-### Proxy
-#### Ask
+### 2.2 Proxy
+#### 2.2.1 Ask
 > Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
 
 ```
 http://proxy.cloudbypass.com:1087
 ```
-##### Request parameters
+##### 2.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
 |---------------|----------|-------------|--------------|-----------------|
 | proxy         | string   | -           |              | Custom proxy address, which can be IP or domain name. Support http, https protocols, such as: http:proxy.com:8080 or http:username:password:proxy.com:8080. The protocol header is optional, if not filled, it defaults to http. |
 
-##### Example
+##### 2.2.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 # Use javascript to request https://opensea.io/category/memberships
@@ -306,11 +306,11 @@ response = requests.get(url, proxies=proxies)
 print(response.text)
 ```
 
-#### Response
+#### 2.2.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.
 > When an error occurs, the server will put the error information into the custom response header parameter.
 
-##### Response header (custom response parameters)
+##### 2.2.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -318,10 +318,10 @@ print(response.text)
 | x-cb-status   | -          | string   | 	Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed. The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting. When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 2.2.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent. When `x-cb-status` is empty, the error code will be The response header `x-cb-code` is returned, and the response body is an error message.
 
-##### Error code
+##### 2.2.2.3 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                   |
@@ -346,15 +346,15 @@ print(response.text)
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-## NodeJS
-### API
-#### Request
+## 3 NodeJS
+### 3.1 API
+#### 3.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
 https://api.cloudbypass.com
 ```
 
-##### Request header (custom request parameters)
+##### 3.1.1.1 Request header (custom request parameters)
 > Here is the full list of request headers for custom requests.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
@@ -366,7 +366,7 @@ https://api.cloudbypass.com
 | x-cb-version  | string   | -           |              | When you need to use Cloud Piercer v2, the request header should be 2. |
 | x-cb-part     | integer  | 0           |              | This request header is only valid in Cloud Piercer v2 and is used to distinguish different sessions. Users can have up to 1000 session partitions. |
 
-##### Example
+##### 3.1.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 // Use javascript to request https://opensea.io/category/memberships
@@ -395,11 +395,11 @@ axios.get(url, {}, {headers: headers})
   .then(response => console.log(response.data))
   .catch(error => console.error(error));
 ```
-#### Response
+#### 3.1.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.  
 When an error occurs, the server will put the error information into the response body, and you can judge it through our custom response parameters.
 
-##### Response header (custom response parameters)
+##### 3.1.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -407,10 +407,10 @@ When an error occurs, the server will put the error information into the respons
 | x-cb-status   | -          | string   | Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed.  The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting.  When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 3.1.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent, if the response header x-cb-status is empty, the response body An error message will be returned.
 
-##### Error message
+##### 3.1.2.3 Error message
 The error message is a JSON object, the following is an example:
 > id: request unique identifier, which can be used for troubleshooting.
 > code: Error code, which is used to identify the type of error and can be used for troubleshooting.
@@ -423,7 +423,7 @@ The error message is a JSON object, the following is an example:
   "message": "string"
 }
 ```
-##### Error code
+##### 3.1.2.4 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                    |
@@ -448,21 +448,21 @@ The error message is a JSON object, the following is an example:
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-### Proxy
-#### Ask
+### 3.2 Proxy
+#### 3.2.1 Ask
 > Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
 
 ```
 http://proxy.cloudbypass.com:1087
 ```
-##### Request parameters
+##### 3.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
 |---------------|----------|-------------|--------------|-----------------|
 | proxy         | string   | -           |              | Custom proxy address, which can be IP or domain name. Support http, https protocols, such as: http:proxy.com:8080 or http:username:password:proxy.com:8080. The protocol header is optional, if not filled, it defaults to http. |
 
-##### Example
+##### 3.2.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 # Use javascript to request https://opensea.io/category/memberships
@@ -498,11 +498,11 @@ axios.get(url, config)
   .catch(error => console.error(error));
 ```
 
-#### Response
+#### 3.2.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.
 > When an error occurs, the server will put the error information into the custom response header parameter.
 
-##### Response header (custom response parameters)
+##### 3.2.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -510,10 +510,10 @@ axios.get(url, config)
 | x-cb-status   | -          | string   | 	Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed. The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting. When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 3.2.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent. When `x-cb-status` is empty, the error code will be The response header `x-cb-code` is returned, and the response body is an error message.
 
-##### Error code
+##### 3.2.2.3 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                   |
@@ -538,15 +538,15 @@ axios.get(url, config)
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message. 
 
-## Java
-### API
-#### Request
+## 4 Java
+### 4.1 API
+#### 4.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
 https://api.cloudbypass.com
 ```
 
-##### Request header (custom request parameters)
+##### 4.1.1.1 Request header (custom request parameters)
 > Here is the full list of request headers for custom requests.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
@@ -558,7 +558,7 @@ https://api.cloudbypass.com
 | x-cb-version  | string   | -           |              | When you need to use Cloud Piercer v2, the request header should be 2. |
 | x-cb-part     | integer  | 0           |              | This request header is only valid in Cloud Piercer v2 and is used to distinguish different sessions. Users can have up to 1000 session partitions. |
 
-##### Example
+##### 4.1.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 // Use java to request https://opensea.io/category/memberships
@@ -601,11 +601,11 @@ public class Main {
 }
 
 ```
-#### Response
+#### 4.1.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.  
 When an error occurs, the server will put the error information into the response body, and you can judge it through our custom response parameters.
 
-##### Response header (custom response parameters)
+##### 4.1.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -613,10 +613,10 @@ When an error occurs, the server will put the error information into the respons
 | x-cb-status   | -          | string   | Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed.  The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting.  When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 4.1.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent, if the response header x-cb-status is empty, the response body An error message will be returned.
 
-##### Error message
+##### 4.1.2.3 Error message
 The error message is a JSON object, the following is an example:
 > id: request unique identifier, which can be used for troubleshooting.
 > code: Error code, which is used to identify the type of error and can be used for troubleshooting.
@@ -629,7 +629,7 @@ The error message is a JSON object, the following is an example:
   "message": "string"
 }
 ```
-##### Error code
+##### 4.1.2.4 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                    |
@@ -654,21 +654,21 @@ The error message is a JSON object, the following is an example:
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
-### Proxy
-#### Ask
+### 4.2 Proxy
+#### 4.2.1 Ask
 > Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
 
 ```
 http://proxy.cloudbypass.com:1087
 ```
-##### Request parameters
+##### 4.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
 
 | **Parameter** | **Type** | **Default** | **Required** | **Description** |
 |---------------|----------|-------------|--------------|-----------------|
 | proxy         | string   | -           |              | Custom proxy address, which can be IP or domain name. Support http, https protocols, such as: http:proxy.com:8080 or http:username:password:proxy.com:8080. The protocol header is optional, if not filled, it defaults to http. |
 
-##### Example
+##### 4.2.1.2 Example
 Visit `https://opensea.io/category/memberships`, the following is an example request:
 ```
 # Use java to request https://opensea.io/category/memberships
@@ -715,11 +715,11 @@ public class Main {
 
 ```
 
-#### Response
+#### 4.2.2 Response
 > If there is no error in the request process, the server will return all the response data requested by the proxy.
 > When an error occurs, the server will put the error information into the custom response header parameter.
 
-##### Response header (custom response parameters)
+##### 4.2.2.1 Response header (custom response parameters)
 > Below is the full list of custom response headers.
 
 | **Parameter** | **Mode**   | **Type** | **Description** |
@@ -727,10 +727,10 @@ public class Main {
 | x-cb-status   | -          | string   | 	Response status, returning ok means that the request has been processed successfully, and returning ok means that the request has failed to be processed. The corresponding points will be deducted when returning ok. |
 | x-cb-code     | Proxy only | string   | Error code, which identifies the type of error and can be used for troubleshooting. When using API mode, the error code will be returned in the response body |
 
-##### Response body
+##### 4.2.2.2 Response body
 > If the response header `x-cb-status` is ok, the response body will be all the response data requested by the agent. When `x-cb-status` is empty, the error code will be The response header `x-cb-code` is returned, and the response body is an error message.
 
-##### Error code
+##### 4.2.2.3 Error code
 > The following is a list of error codes, through which you can quickly locate the cause of the error.
 
 | **Code**                     | **Mode**    | **Description**                                                                                                                                                   |
