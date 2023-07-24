@@ -28,7 +28,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 # curl -X GET "https://opensea.io/category/memberships"
 
 # 使用 ScrapingBypass API 请求示例
-# Use Cloudbyapss API to request
+# Use ScrapingBypass API to request
 curl -X GET "https://api.cloudbypass.com/category/memberships" ^
    -H "x-cb-apikey: YOUR_API_KEY" ^
    -H "x-cb-host: opensea.io" -k
@@ -108,8 +108,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 # curl -X GET "https://opensea.io/category/memberships"
 
 
-# 使用 ScrapingBypass Proxy 请求示例
-# Use Cloudbyapss Proxy to request
+# Use ScrapingBypass Proxy to request
 curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087" -k
 ```
 
@@ -180,7 +179,6 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 import requests
 
 """
-# 修改前的代码示例
 # original code
 url = "https://opensea.io/category/memberships"
 response = requests.request("GET", url)
@@ -189,8 +187,7 @@ print(response.status_code,response.reason)
 # (403, 'Forbidden')
 """
 
-# 使用 ScrapingBypass API 请求示例
-# Use Cloudbyapss API to request
+# Use ScrapingBypass API to request
 url = "https://api.cloudbypass.com/category/memberships"
 
 headers = {
@@ -277,7 +274,6 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 import requests
 
 """
-# 修改前的代码示例
 # original code
 url = "https://opensea.io/category/memberships"
 response = requests.request("GET", url)
@@ -287,8 +283,7 @@ print(response.status_code,response.reason)
 """
 
 
-# 使用 ScrapingBypass Proxy 请求示例
-# Use Cloudbyapss Proxy to request
+# Use ScrapingBypass Proxy to request
 url = "https://opensea.io/category/memberships"
 proxies = {
     "http": "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087",
@@ -374,7 +369,6 @@ const axios = require('axios');
 
 
 /*
-// 修改前的代码示例
 // original code
 const url = "https://opensea.io/category/memberships";
 axios.get(url, {})
@@ -383,8 +377,7 @@ axios.get(url, {})
 */
 
 
-// 使用 ScrapingBypass API 请求示例
-// Use Cloudbyapss API to request
+// Use ScrapingBypass API to request
 const url = "https://api.cloudbypass.com/path/to/target?a=4";
 const headers = {
   'x-cb-apikey': 'YOUR_API_KEY',
@@ -469,7 +462,6 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 const axios = require('axios');
 
 /*
-// 修改前的代码示例
 // original code
 const url = "https://opensea.io/category/memberships";
 axios.get(url, {})
@@ -477,8 +469,7 @@ axios.get(url, {})
   .catch(error => console.error(error));
 */
 
-// 使用 ScrapingBypass Proxy 请求示例
-// Use Cloudbyapss Proxy to request
+// Use ScrapingBypass Proxy to request
 const url = "https://opensea.io/category/memberships";
 const config = {
     proxy: {
@@ -571,7 +562,6 @@ import java.net.http.HttpResponse;
 public class Main {
     public static void main(String[] args) throws Exception {
         /*
-            // 修改前的代码示例
             // original code
             String url = "https://opensea.io/category/memberships";
             HttpClient client = HttpClient.newHttpClient();
@@ -584,8 +574,7 @@ public class Main {
             System.out.println(response.body());
         */
 
-        // 使用 ScrapingBypass API 请求示例
-        // Use Cloudbyapss API to request
+        // Use ScrapingBypass API to request
         String url = "https://api.cloudbypass.com/category/memberships";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -680,7 +669,6 @@ import java.net.http.HttpResponse;
 public class Main {
     public static void main(String[] args) throws Exception {
         /*
-            // 修改前的代码示例
             // original code
             String url = "https://opensea.io/category/memberships";
             HttpClient client = HttpClient.newHttpClient();
@@ -694,8 +682,7 @@ public class Main {
         */
 
 
-        // 使用 ScrapingBypass Proxy 请求示例
-        // Use Cloudbyapss Proxy to request
+        // Use ScrapingBypass Proxy to request
         String url = "https://opensea.io/category/memberships";
         HttpClient client = HttpClient.newBuilder()
                 .proxy(HttpClient
