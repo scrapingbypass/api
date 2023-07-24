@@ -1,5 +1,5 @@
 # ScrapingBypass API 
-Using ScrapingBypass can help you easily bypass Cloudflare's verification.
+Using **[ScrapingBypass](https://www.scrapingbypass.com/)** can help you easily bypass Cloudflare's verification.
 This document provides detailed usage methods of HTTP API mode and Proxy mode, including interface address, request parameters, return processing, etc.
 ## Curl
 ### API
@@ -27,7 +27,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 # Use curl to request https://opensea.io/category/memberships
 # curl -X GET "https://opensea.io/category/memberships"
 
-# 使用 穿云API 请求示例
+# 使用 ScrapingBypass API 请求示例
 # Use Cloudbyapss API to request
 curl -X GET "https://api.cloudbypass.com/category/memberships" ^
    -H "x-cb-apikey: YOUR_API_KEY" ^
@@ -108,7 +108,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 # curl -X GET "https://opensea.io/category/memberships"
 
 
-# 使用 穿云Proxy 请求示例
+# 使用 ScrapingBypass Proxy 请求示例
 # Use Cloudbyapss Proxy to request
 curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087" -k
 ```
@@ -189,7 +189,7 @@ print(response.status_code,response.reason)
 # (403, 'Forbidden')
 """
 
-# 使用 穿云API 请求示例
+# 使用 ScrapingBypass API 请求示例
 # Use Cloudbyapss API to request
 url = "https://api.cloudbypass.com/category/memberships"
 
@@ -287,7 +287,7 @@ print(response.status_code,response.reason)
 """
 
 
-# 使用 穿云Proxy 请求示例
+# 使用 ScrapingBypass Proxy 请求示例
 # Use Cloudbyapss Proxy to request
 url = "https://opensea.io/category/memberships"
 proxies = {
@@ -383,7 +383,7 @@ axios.get(url, {})
 */
 
 
-// 使用 穿云API 请求示例
+// 使用 ScrapingBypass API 请求示例
 // Use Cloudbyapss API to request
 const url = "https://api.cloudbypass.com/path/to/target?a=4";
 const headers = {
@@ -477,7 +477,7 @@ axios.get(url, {})
   .catch(error => console.error(error));
 */
 
-// 使用 穿云Proxy 请求示例
+// 使用 ScrapingBypass Proxy 请求示例
 // Use Cloudbyapss Proxy to request
 const url = "https://opensea.io/category/memberships";
 const config = {
@@ -584,7 +584,7 @@ public class Main {
             System.out.println(response.body());
         */
 
-        // 使用 穿云API 请求示例
+        // 使用 ScrapingBypass API 请求示例
         // Use Cloudbyapss API to request
         String url = "https://api.cloudbypass.com/category/memberships";
         HttpClient client = HttpClient.newHttpClient();
@@ -694,7 +694,7 @@ public class Main {
         */
 
 
-        // 使用 穿云Proxy 请求示例
+        // 使用 ScrapingBypass Proxy 请求示例
         // Use Cloudbyapss Proxy to request
         String url = "https://opensea.io/category/memberships";
         HttpClient client = HttpClient.newBuilder()
