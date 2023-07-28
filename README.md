@@ -1,5 +1,5 @@
 # ScrapingBypass API 
-Using **[ScrapingBypass](https://www.scrapingbypass.com/)** can help you easily bypass Cloudflare's verification.
+Using **[ScrapingBypass](https://www.scrapingbypass.com)** can help you easily [bypass Cloudflare](https://www.scrapingbypass.com) anti-bot verification.
 This document provides detailed usage methods of HTTP API mode and Proxy mode, including interface address, request parameters, return processing, etc.
 ## 1 Curl
 ### 1.1 API
