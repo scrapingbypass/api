@@ -1,12 +1,15 @@
 # ScrapingBypass API 
 Using **[ScrapingBypass](https://www.scrapingbypass.com)** can help you easily [bypass Cloudflare](https://www.scrapingbypass.com) anti-bot verification.
+
+Query the balance of API credits: `https://console.scrapingbypass.com/api/v1/balance?apikey=`
+
 This document provides detailed usage methods of HTTP API mode and Proxy mode, including interface address, request parameters, return processing, etc.
 ## 1 Curl
 ### 1.1 API
 #### 1.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
-https://api.cloudbypass.com
+https://api.scrapingbypass.com
 ```
 
 ##### 1.1.1.1 Request header (custom request parameters)
@@ -29,7 +32,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 
 # 使用 ScrapingBypass API 请求示例
 # Use ScrapingBypass API to request
-curl -X GET "https://api.cloudbypass.com/category/memberships" ^
+curl -X GET "https://api.scrapingbypass.com/category/memberships" ^
    -H "x-cb-apikey: YOUR_API_KEY" ^
    -H "x-cb-host: opensea.io" -k
 
@@ -82,17 +85,17 @@ The error message is a JSON object, the following is an example:
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
 ### 1.2 Proxy
 #### 1.2.1 Ask
-> Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
+> Just replace the proxy service address with the proxy address of ScrapingBypass. The following is the proxy service address:
 
 ```
-http://proxy.cloudbypass.com:1087
+http://proxy.scrapingbypass.com:1087
 ```
 ##### 1.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
@@ -109,7 +112,7 @@ Visit `https://opensea.io/category/memberships`, the following is an example req
 
 
 # Use ScrapingBypass Proxy to request
-curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087" -k
+curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@proxy.scrapingbypass.com:1087" -k
 ```
 
 #### 1.2.2 Response
@@ -147,7 +150,7 @@ curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@p
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
@@ -157,7 +160,7 @@ curl -X GET "https://opensea.io/category/memberships" -x "http://YOUR_API_KEY:@p
 #### 2.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
-https://api.cloudbypass.com
+https://api.scrapingbypass.com
 ```
 
 ##### 2.1.1.1 Request header (custom request parameters)
@@ -188,7 +191,7 @@ print(response.status_code,response.reason)
 """
 
 # Use ScrapingBypass API to request
-url = "https://api.cloudbypass.com/category/memberships"
+url = "https://api.scrapingbypass.com/category/memberships"
 
 headers = {
     'x-cb-apikey': 'YOUR_API_KEY',
@@ -248,17 +251,17 @@ The error message is a JSON object, the following is an example:
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
 ### 2.2 Proxy
 #### 2.2.1 Ask
-> Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
+> Just replace the proxy service address with the proxy address of ScrapingBypass. The following is the proxy service address:
 
 ```
-http://proxy.cloudbypass.com:1087
+http://proxy.scrapingbypass.com:1087
 ```
 ##### 2.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
@@ -286,14 +289,14 @@ print(response.status_code,response.reason)
 # Use ScrapingBypass Proxy to request
 url = "https://opensea.io/category/memberships"
 proxies = {
-    "http": "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087",
-    "https": "http://YOUR_API_KEY:@proxy.cloudbypass.com:1087"
+    "http": "http://YOUR_API_KEY:@proxy.scrapingbypass.com:1087",
+    "https": "http://YOUR_API_KEY:@proxy.scrapingbypass.com:1087"
 }
 
 # Use a custom proxy
 # proxies = {
-#     "http": "http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.cloudbypass.com:1087",
-#     "https": "http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.cloudbypass.com:1087"
+#     "http": "http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.scrapingbypass.com:1087",
+#     "https": "http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.scrapingbypass.com:1087"
 # }
 
 response = requests.get(url, proxies=proxies)
@@ -336,7 +339,7 @@ print(response.text)
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
@@ -346,7 +349,7 @@ print(response.text)
 #### 3.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
-https://api.cloudbypass.com
+https://api.scrapingbypass.com
 ```
 
 ##### 3.1.1.1 Request header (custom request parameters)
@@ -378,7 +381,7 @@ axios.get(url, {})
 
 
 // Use ScrapingBypass API to request
-const url = "https://api.cloudbypass.com/path/to/target?a=4";
+const url = "https://api.scrapingbypass.com/path/to/target?a=4";
 const headers = {
   'x-cb-apikey': 'YOUR_API_KEY',
   'x-cb-host': 'www.example.com',
@@ -436,17 +439,17 @@ The error message is a JSON object, the following is an example:
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
 ### 3.2 Proxy
 #### 3.2.1 Ask
-> Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
+> Just replace the proxy service address with the proxy address of ScrapingBypass. The following is the proxy service address:
 
 ```
-http://proxy.cloudbypass.com:1087
+http://proxy.scrapingbypass.com:1087
 ```
 ##### 3.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
@@ -473,7 +476,7 @@ axios.get(url, {})
 const url = "https://opensea.io/category/memberships";
 const config = {
     proxy: {
-        host: 'proxy.cloudbypass.com',
+        host: 'proxy.scrapingbypass.com',
         port: 1087,
         auth: {
             username: 'YOUR_API_KEY',
@@ -524,7 +527,7 @@ axios.get(url, config)
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message. 
@@ -534,7 +537,7 @@ axios.get(url, config)
 #### 4.1.1 Request
 > The API requests provided by this site are all communicated based on a secure encryption protocol. The following is the url address of the HTTP API:
 ```
-https://api.cloudbypass.com
+https://api.scrapingbypass.com
 ```
 
 ##### 4.1.1.1 Request header (custom request parameters)
@@ -575,7 +578,7 @@ public class Main {
         */
 
         // Use ScrapingBypass API to request
-        String url = "https://api.cloudbypass.com/category/memberships";
+        String url = "https://api.scrapingbypass.com/category/memberships";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -638,17 +641,17 @@ The error message is a JSON object, the following is an example:
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message.                                                                              |
 
 ### 4.2 Proxy
 #### 4.2.1 Ask
-> Just replace the proxy service address with the proxy address of CloudBypass. The following is the proxy service address:
+> Just replace the proxy service address with the proxy address of ScrapingBypass. The following is the proxy service address:
 
 ```
-http://proxy.cloudbypass.com:1087
+http://proxy.scrapingbypass.com:1087
 ```
 ##### 4.2.1.1 Request parameters
 > Below is the full list of custom request parameters.
@@ -688,8 +691,8 @@ public class Main {
                 .proxy(HttpClient
                         .ProxySelector
                         // Use a custom proxy
-                        //.of(URI.create("http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.cloudbypass.com:1087")))
-                        .of(URI.create("http://YOUR_API_KEY:@proxy.cloudbypass.com:1087")))
+                        //.of(URI.create("http://YOUR_API_KEY:proxy=http:CUSTOM_PROXY:8080@proxy.scrapingbypass.com:1087")))
+                        .of(URI.create("http://YOUR_API_KEY:@proxy.scrapingbypass.com:1087")))
                 .build();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -737,7 +740,7 @@ public class Main {
 | CERT_ERROR                   | -           | The certificate is wrong. It may be that the certificate parsing failed or the certificate parsing timed out.                                                      |
 | REQUEST_ERROR                | -           | The request was wrong, either the request timed out or the request was rejected.                                                                                   |
 | EOF_ERROR                    | -           | EOF error, please check whether the requested address or proxy server address is correct.                                                                          |
-| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try Cloudbypass V2 requests.                                                                                                      |
+| CLOUDFLARE_PREMIUM           | API v1 only | Protected by Cloudflare Premium, try ScrapingBypass V2 requests.                                                                                                      |
 | CLOUDFLARE_CHALLENGE_TIMEOUT | API v2 only | Cloudflare challenge timeout.                                                                                                                                      |
 | FORBIDDEN                    | API only    | Access is restricted by the target website. For details, refer to the response message.                                                                            |
 | INTERNAL_ERROR               | -           | Internal error, we will fix it as soon as possible after receiving the error message. 
